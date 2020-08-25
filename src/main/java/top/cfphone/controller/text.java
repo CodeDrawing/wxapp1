@@ -27,4 +27,8 @@ public class text {
         System.out.println("电话为"+phone);
         System.out.println("地址为"+address);
     }
+    @RequestMapping()
+    public void run02 (){
+
+    }
 }
