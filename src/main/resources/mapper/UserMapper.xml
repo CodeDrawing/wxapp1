@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.cfphone.mapper.UserMapper">
+<select id="loginIn" resultType="top.cfphone.pojo.User" parameterType="top.cfphone.pojo.User">
+    select * from user where userName=#{userName} and password=#{password}
+</select>
+    <select id="queryPermission" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select permission from user where userName=#{name}
+    </select>
+
+</mapper>

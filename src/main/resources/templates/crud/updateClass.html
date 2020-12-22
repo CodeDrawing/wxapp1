@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http:www/thymeleaf.org">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+    <style type="text/css">
+        /* Chart.js */
+
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+</head>
+
+<body>
+<div th:replace="~{commons/commons::topbar}"></div>
+
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div th:replace="~{commons/commons::sidebar(active='classList.html')}"></div>
+
+        <!--添加员工的表单-->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <form th:action="@{/class/updateClass}" method="post">
+                <input type="hidden" name="classId" th:value="${class.getClassId()}">
+            <div class="form-group">
+                <label>课程名</label>
+                <input type="text" class="form-control" placeholder=""style="width: 35%" name="className" th:value="${class.getClassName()}">
+            </div>
+            <div class="form-group">
+                <label>上课教室</label>
+                <input type="text" class="form-control" placeholder=""style="width: 35%" name="classRoom" th:value="${class.getClassRoom()}">
+            </div>
+            <div class="form-group">
+                <label>开课日期</label>
+                <input type="date" class="form-control" placeholder=""style="width: 35%" name="classTime" th:value="${#dates.format(class.getClassTime(),'yyyy-MM-dd')}">
+            </div>
+            <div class="form-group">
+                <label>上课老师</label>
+                <select class="form-control" name="teacherId" style="width:35%">
+                    <option th:each="teacher:${teacherList}" th:text="${teacher.getTeacherName()}" th:value="${teacher.getTeacherId()}"></option>
+                </select>
+            </div>
+                <div class="form-group">
+                    <label>上课时间</label>
+                    <input type="text" class="form-control" placeholder=""style="width: 35%" name="text" >
+                </div>
+            <button type="submit" class="btn btn-primary" style="margin-left: 31%">提交</button>
+            </form>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<!-- Icons -->
+<script type="text/javascript" src="/js/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+
+<!-- Graphs -->
+<script type="text/javascript" src="/js/Chart.min.js"></script>
+
+
+</body>
+
+</html>

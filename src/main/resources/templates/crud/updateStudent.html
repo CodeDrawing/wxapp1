@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http:www/thymeleaf.org">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+    <style type="text/css">
+        /* Chart.js */
+
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+</head>
+
+<body>
+<div th:replace="~{commons/commons::topbar}"></div>
+
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div th:replace="~{commons/commons::sidebar(active='studentList.html')}"></div>
+
+        <!--添加员工的表单-->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <form th:action="@{/student/updateStudent}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="studentId" th:value="${student.getStudentId()}">
+                <div class="form-group">
+                    <label>更改学生头像</label>
+                    <img th:src="@{${student.getStudentPhotoPath()}}" alt="..." class="img-thumbnail" style="width:10%;height: 10%">
+                    <input type="file" name="studentPhoto" >
+                </div>
+            <div class="form-group">
+                <label>学生姓名</label>
+                <input type="text" class="form-control"required="" placeholder="" name="studentName"style="width:35%" th:value="${student.getStudentName()}">
+            </div>
+            <div class="form-group">
+                <label>年龄</label>
+                <input type="text" class="form-control"required="" placeholder="" name="age"style="width:35%" th:value="${student.getAge()}">
+            </div>
+                <div class="form-group">
+                    <label>性别</label>
+                    <div class="form-check form-check-inline" style="margin-left: 1%">
+                        <input class="form-check-input"required="" type="radio" name="sex" value="男" th:checked="${student.getSex()=='男'}">
+                        <label class="form-check-label">男</label>
+                    </div>
+                    <div class="form-check form-check-inline"style="margin-left: 3%">
+                        <input class=required="" type="radio" name="sex" value="女" th:checked="${student.getSex()=='女'}">
+                        <label class="form-check-label">女</label>
+                    </div>
+                </div>
+            <div class="form-group">
+                <label>积分</label>
+                <input type="text" class="form-control"required=""style="width:35%" placeholder="" name="cumulativeScoring" th:value="${student.getCumulativeScoring()}">
+            </div>
+                <div class="form-group">
+                    <label>入学时间</label>
+                <input type="date" class="form-control"required=""style="width:35%" placeholder="" name="admissionTime" th:value="${#dates.format(student.getAdmissionTime(),'yyyy-MM-dd')}">
+            </div>
+            <div class="form-group">
+                <label>总课时</label>
+                <input type="text" class="form-control"required=""style="width:35%" placeholder="" name="allClass" th:value="${student.getAllClass()}">
+            </div>
+            <div class="form-group">
+                <label>剩余课时</label>
+                <input type="text" class="form-control"required=""style="width:35%" placeholder="" name="restOfClass" th:value="${student.getRestOfClass()}">
+            </div>
+            <div class="form-group">
+                <label>家长名字</label>
+                <input type="text" class="form-control"required=""style="width:35%" placeholder="" name="parentsName" th:value="${student.getParentsName()}">
+            </div>
+            <div class="form-group">
+                <label>联系电话</label>
+                <input type="text" class="form-control"required=""style="width:35%" placeholder="" name="telephoneNumber" th:value="${student.getTelephoneNumber()}">
+            </div>
+            <div class="form-group">
+                <label>与学生关系</label>
+                <input type="text" class="form-control"required=""style="width:35%" placeholder="" name="relationshipWithStudent" th:value="${student.getRelationshipWithStudent()}">
+            </div>
+            <button type="submit" class="btn btn-primary"  style="margin-left: 31%">提交</button>
+            </form>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<!-- Icons -->
+<script type="text/javascript" src="/js/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+
+<!-- Graphs -->
+<script type="text/javascript" src="/js/Chart.min.js"></script>
+
+</body>
+
+</html>

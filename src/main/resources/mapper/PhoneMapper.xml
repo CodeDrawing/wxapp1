@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.cfphone.mapper.PhoneMapper">
+    <select id="showPhoneInfo" resultType="top.cfphone.pojo.PhoneInfo" parameterType="java.lang.String">
+        SELECT * FROM price WHERE brand=#{pingPai} and IsCount=0
+    </select>
+    <select id="showPhoneInfo1" resultType="top.cfphone.pojo.PhoneInfo" parameterType="java.lang.String">
+        SELECT * FROM phonetable WHERE pingPai=#{pingPai} and isOrNot='否'
+    </select>
+    <select id="queryPingpaiCount" resultType="top.cfphone.pojo.PhoneInfo" parameterType="java.lang.String">
+        SELECT * FROM price WHERE brand=#{pingPai} and IsCount=1
+    </select>
+    <select id="queryPingpaiCount1" resultType="top.cfphone.pojo.PhoneInfo" parameterType="java.lang.String">
+        SELECT * FROM phonetable WHERE pingPai=#{pingPai} and isOrNot='是'
+    </select>
+    <insert id="commitInfo" parameterType="top.cfphone.pojo.CommitInfo">
+        insert into submitinfo(name,number,price,phone,address) value (#{name},#{number},#{price},#{phone},#{address})
+    </insert>
+    <select id="showAllPhoneInfo" resultType="top.cfphone.pojo.PhoneInfo">
+        select * from phonetable
+    </select>
+</mapper>

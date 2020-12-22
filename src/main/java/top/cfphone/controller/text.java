@@ -1,11 +1,15 @@
 package top.cfphone.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import top.cfphone.pojo.PhoneInfo;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author zx
@@ -13,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class text {
+
     @RequestMapping("/text")
     @ResponseBody
     public void run01(HttpServletResponse response, HttpServletRequest request){
@@ -27,8 +32,5 @@ public class text {
         System.out.println("电话为"+phone);
         System.out.println("地址为"+address);
     }
-    @RequestMapping()
-    public void run02 (){
 
-    }
 }
